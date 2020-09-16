@@ -36,21 +36,3 @@ WindDirection varchar(30) not null,
 WeatherIconLink varchar(150) not null,
 foreign key (CityId) references City (Id)
 );
-
-
-
-
-
-select * from Region;
-select * from City;
-select * from WeatherForecast;
-
-select CityName from City
-join WeatherForecast on CityId = City.Id;
-
-select Id, RegionId, CityName, CityLink  from City where RegionId = (select Id from Region where RegionName = 'Брянская область') and CityName = 'Брянск';
-
-select CityName, WeatherDate, TempDay, TempNight, WindDirection, WeatherForecast.Id as WatherForId, City.Id as CityId from City
-join WeatherForecast on CityId = City.Id
-join Region on RegionId = Region.Id
-where CityName = 'Брянск' and RegionName = 'Брянская область';
